@@ -10,24 +10,60 @@ class Peliculas extends Component {
             { titulo: 'Gran Torino', imagen: 'https://assets.puzzlefactory.pl/puzzle/265/858/original.jpg' },
             { titulo: 'Looper', imagen: 'https://filmschoolrejects.com/wp-content/uploads/2019/07/looper-1280x720.jpg' },
         ],
-        nombre: 'Gaston Marcilio'
+        nombre: 'Gaston Marcilio',
+        favorita: {},
+        indice: ''
     };
 
     cambiarTitulo = () => {
 
 
-        var {peliculas} = this.state;
-        var random = Math.floor(Math.random() * 3);
+        var { peliculas } = this.state;
+        // var random = Math.floor(Math.random() * 3);
 
-        peliculas[random].titulo = 'Batman begins';
+        peliculas[0].titulo = 'Batman begins';
 
         this.setState({
-            peliculas: peliculas
+            peliculas: peliculas,
+
         })
     }
 
 
+    favorita = (pelicula, indiceMarcado) => {
+        console.log(pelicula);
+        this.setState({
+            favorita: pelicula,
+            indice: indiceMarcado
+        })
+    }
+
+    // antes de que se cargue todo
+    
+    componentWillMount(){
+        // alert("se va a montar el componente")
+        
+    }
+
+    // despues de que se cargue
+
+    componentDidMount(){
+        // alert("se acaba de cargar el componente")
+    }
+
+    componentWillUnmount(){
+
+    }
+
     render() {
+        var pStyle = {
+            background: 'green',
+            color: 'white',
+            padding: '10px'
+        };
+
+
+
         return (
             <div id="content" className="peliculas">
 
@@ -36,9 +72,27 @@ class Peliculas extends Component {
 
                 <p>
                     <button onClick={this.cambiarTitulo}>
-                        Boton
+                        Cambia titulo Batman
                     </button>
                 </p>
+
+                {
+                    this.state.favorita.titulo ? (
+                    <p className="favorita" style={pStyle}>
+
+                        <p>
+                            <strong>La pelicula favorita es: </strong>
+                            <span>{this.state.favorita.titulo}</span>
+                            <br />
+                            <span>{this.state.indice + 1}</span>
+                        </p>
+
+                    </p>
+                    ) : (
+                        <p>Falso</p>
+                    )
+                }
+
 
                 {/* Componente de peliculas */}
                 <div className="articules-item" id="articles">
@@ -47,9 +101,14 @@ class Peliculas extends Component {
                         this.state.peliculas.map((pelicula, i) => {
                             return (
 
-                                <Pelicula key={i} pelicula={pelicula}/>
+                                <Pelicula
+                                    key={i}
+                                    pelicula={pelicula}
+                                    indice={i}
+                                    marcarFavorita={this.favorita}
+                                />
 
-                                
+
                             )
                         })
                     }
