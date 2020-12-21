@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 
-class MiComponente extends Component{
+class MiComponente extends Component {
 
-    render(){
+    render() {
 
         let receta = {
             nombre: 'Pizza',
@@ -17,20 +17,25 @@ class MiComponente extends Component{
             <div className="componente">
 
 
-            <h1>{receta.nombre}</h1>
-            <h1>{receta.calorias}</h1>
-            <h2>Hola soy MiComponenteeee</h2>
-            <ol>
-            {
-                receta.ingredientes.map((ingrediente, i) =>{
-                    return (
-                        <li key={i}>
-                            {ingrediente}
-                        </li>
-                    )
-                })
-            }
-            </ol>
+                <h1>{receta.nombre}</h1>
+                <h1>{receta.calorias}</h1>
+                <h2>Hola soy MiComponenteeee</h2>
+                {this.props.saludo &&
+                    
+                    <h3> {this.props.saludo} </h3>
+                    
+                }
+                <ol>
+                    {
+                        receta.ingredientes.map((ingrediente, i) => {
+                            return (
+                                <li key={i}>
+                                    {ingrediente}
+                                </li>
+                            )
+                        })
+                    }
+                </ol>
             </div>
             // </React.Fragment>
         );
