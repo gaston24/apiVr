@@ -13,6 +13,8 @@ class Pelicula extends Component {
 
         const pelicula = this.props.pelicula;
 
+        // console.log(this.props);
+
         return (
 
             <article className="article-item" id="article-template">

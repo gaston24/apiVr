@@ -6,16 +6,25 @@ import Sidebar from './Sidebar';
 
 class Peliculas extends Component {
 
-    state = {
-        peliculas: [
-            { titulo: 'Batman vs superman', imagen: 'https://i.pinimg.com/originals/08/cb/c3/08cbc3566f6ed36c05811c668113ad6e.jpg' },
-            { titulo: 'Gran Torino', imagen: 'https://assets.puzzlefactory.pl/puzzle/265/858/original.jpg' },
-            { titulo: 'Looper', imagen: 'https://filmschoolrejects.com/wp-content/uploads/2019/07/looper-1280x720.jpg' },
-        ],
-        nombre: 'Gaston Marcilio',
-        favorita: {},
-        indice: ''
-    };
+
+    construct(props) {
+        // super(props)
+        
+        this.state = {
+            peliculas: [
+                { titulo: 'Batman vs superman', imagen: 'https://i.pinimg.com/originals/08/cb/c3/08cbc3566f6ed36c05811c668113ad6e.jpg' },
+                { titulo: 'Gran Torino', imagen: 'https://assets.puzzlefactory.pl/puzzle/265/858/original.jpg' },
+                { titulo: 'Looper', imagen: 'https://filmschoolrejects.com/wp-content/uploads/2019/07/looper-1280x720.jpg' },
+            ],
+            nombre: 'Gaston Marcilio',
+            favorita: {},
+            indice: ''
+        };
+        
+        }
+
+
+    
 
     cambiarTitulo = () => {
 
