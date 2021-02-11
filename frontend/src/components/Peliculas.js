@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import Pelicula from './Pelicula';
+import Slider from './Slider';
+import Sidebar from './Sidebar';
 
 class Peliculas extends Component {
 
@@ -39,19 +41,19 @@ class Peliculas extends Component {
     }
 
     // antes de que se cargue todo
-    
-    componentWillMount(){
+
+    componentWillMount() {
         // alert("se va a montar el componente")
-        
+
     }
 
     // despues de que se cargue
 
-    componentDidMount(){
+    componentDidMount() {
         // alert("se acaba de cargar el componente")
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
 
     }
 
@@ -65,57 +67,79 @@ class Peliculas extends Component {
 
 
         return (
-            <div id="content" className="peliculas">
 
-                <h2 className="subheader">Peliculas</h2>
-                <p>Seleccion de las peliculas favoritas de {this.state.nombre}</p>
+            <React.Fragment>
 
-                <p>
-                    <button onClick={this.cambiarTitulo}>
-                        Cambia titulo Batman
+            
+
+            <Slider
+                    
+                    size="slider-small"
+                />
+
+            <div className="center">
+
+
+                <div id="content" className="peliculas">
+
+                    <h2 className="subheader">Peliculas</h2>
+                    <p>Seleccion de las peliculas favoritas de {this.state.nombre}</p>
+
+                    <p>
+                        <button onClick={this.cambiarTitulo}>
+                            Cambia titulo Batman
                     </button>
-                </p>
-
-                {
-                    this.state.favorita.titulo ? (
-                    <p className="favorita" style={pStyle}>
-
-                        <p>
-                            <strong>La pelicula favorita es: </strong>
-                            <span>{this.state.favorita.titulo}</span>
-                            <br />
-                            <span>{this.state.indice + 1}</span>
-                        </p>
-
                     </p>
-                    ) : (
-                        <p>Falso</p>
-                    )
-                }
-
-
-                {/* Componente de peliculas */}
-                <div className="articules-item" id="articles">
 
                     {
-                        this.state.peliculas.map((pelicula, i) => {
-                            return (
+                        this.state.favorita.titulo ? (
+                            <p className="favorita" style={pStyle}>
 
-                                <Pelicula
-                                    key={i}
-                                    pelicula={pelicula}
-                                    indice={i}
-                                    marcarFavorita={this.favorita}
-                                />
+                                <p>
+                                    <strong>La pelicula favorita es: </strong>
+                                    <span>{this.state.favorita.titulo}</span>
+                                    <br />
+                                    <span>{this.state.indice + 1}</span>
+                                </p>
 
-
+                            </p>
+                        ) : (
+                                <p>Falso</p>
                             )
-                        })
                     }
+
+
+                    {/* Componente de peliculas */}
+                    <div className="articules-item" id="articles">
+
+                        {
+                            this.state.peliculas.map((pelicula, i) => {
+                                return (
+
+                                    <Pelicula
+                                        key={i}
+                                        pelicula={pelicula}
+                                        indice={i}
+                                        marcarFavorita={this.favorita}
+                                    />
+
+
+                                )
+                            })
+                        }
+
+                    </div>
 
                 </div>
 
+                <Sidebar 
+                    blog="true"
+                    
+                    />
+
             </div>
+
+            </React.Fragment>
         );
     }
 }
